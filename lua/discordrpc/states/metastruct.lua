@@ -14,12 +14,12 @@ end
 function metastruct:GetState()
 	-- Possibly reserved for other discordrpc states
 	local ply = LocalPlayer()
-	local zone = landmark.nearest(ply:GetPos()) or "Unknown"
+	local zone = landmark.nearest(ply:GetPos()) or "Some Place"
 	if zone:match("dond") or zone:match("minigame") then
 		return "Playing DOND"
 	end
 	
-	return "In " .. zone:gsub("^[a-z]", string.upper)
+	return "In " .. zone:gsub("^[a-z]", string.upper):gsub("_", " ")
 end
 
 local start = os.time() -- os.time since spawned in the server, do not edit
