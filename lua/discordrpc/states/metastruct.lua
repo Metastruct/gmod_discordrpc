@@ -4,13 +4,24 @@ if not discordrpc then ErrorNoHalt("DiscordRPC: missing???") return end
 local metastruct = {}
 function metastruct:GetDetails()
 	-- I was thinking of adding zones there maybe, we need to get those working clientside
+	local ply = LocalPlayer()
+	if ply:GetNWBool("in pac3 editor") then
+		return "In PAC Editor"
+	end
+	
 	return nil
 end
 function metastruct:GetState()
-	-- Other possible states: In PAC Editor, In <zone>, Playing DOND?
 	-- Possibly reserved for other discordrpc states
-	return "In Game"
+	local ply = LocalPlayer()
+	local zone = landmark.nearest(ply:GetPos()) or "Unknown"
+	if zone:match("dond") or zone:match("minigame") then
+		return "Playing DOND"
+	end
+	
+	return "In " .. zone:gsub("^[a-z]", string.upper)
 end
+
 local start = os.time() -- os.time since spawned in the server, do not edit
 function metastruct:GetTimestamps()
 	return {
