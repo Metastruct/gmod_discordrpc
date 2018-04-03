@@ -15,7 +15,11 @@ local zone_fixup = {
 	breenoffice = "breen_office",
 	cre = "core",
 	cinm = "cinema",
-	slight = "darkness"
+	slight = "darkness",
+	land_build = "build",
+	land_rp = "RP",
+	land_caves = "caves",
+	land_vphys = "VPhys"
 }
 function metastruct:GetState()
 	-- Possibly reserved for other discordrpc states
