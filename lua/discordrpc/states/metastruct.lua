@@ -2,6 +2,14 @@
 if not discordrpc then ErrorNoHalt("DiscordRPC: missing???") return end
 
 local metastruct = {}
+function metastruct:Init()
+	discordrpc.clientID = "351448585939845141"
+
+	timer.Create("discordrpc_state_metastruct", 15, 0, function()
+		discordrpc.SetActivity(self:GetActivity, discordrpc.Print)
+	end)
+end
+
 function metastruct:GetDetails()
 	-- I was thinking of adding zones there maybe, we need to get those working clientside
 	local ply = LocalPlayer()
@@ -70,9 +78,12 @@ function metastruct:GetAssets()
 
 	return assets
 end
+function metastruct:GetActivity()
+	return {
+		details = self:GetDetails(),
+		state = self:GetState(),
+		timestamps = self:GetTimestamps(),
+		assets = self:GetAssets()
+	}
+end
 discordrpc.states.metastruct = metastruct
-
-timer.Create("discordrpc_metastruct", 20, 0, function()
-	discordrpc.SetActivity(discordrpc.GetActivity(), discordrpc.Print)
-end)
-
