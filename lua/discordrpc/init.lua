@@ -5,7 +5,7 @@
 
 discordrpc = discordrpc or {}
 discordrpc.enabled = CreateClientConVar("discordrpc_enabled", "1", true, false) -- FIX: If turned off while in game, Rich Presence will get stuck until you quit the game
-discordrpc.debug = CreateClientConVar("discordrpc_debug", "1", true, false) -- alternatively, use the "developer" convar?
+discordrpc.debug = CreateClientConVar("discordrpc_debug", "0", true, false) -- alternatively, use the "developer" convar?
 discordrpc.port = discordrpc.port
 
 discordrpc.states = discordrpc.states or {}
