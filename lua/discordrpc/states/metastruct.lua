@@ -6,7 +6,7 @@ function metastruct:Init()
 	discordrpc.clientID = "351448585939845141"
 
 	timer.Create("discordrpc_state_metastruct", 15, 0, function()
-		discordrpc.SetActivity(self:GetActivity, discordrpc.Print)
+		discordrpc.SetActivity(self:GetActivity(), discordrpc.Print)
 	end)
 end
 
